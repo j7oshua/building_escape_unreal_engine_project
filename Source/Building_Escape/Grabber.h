@@ -28,8 +28,12 @@ protected:
 private:
 	float Reach = 100.f;
 
-	UPhysicsHandleComponent* PhysicsHandle = nullptr;
-	UInputComponent* PawnInput = nullptr;
+	UPROPERTY()
+		UPhysicsHandleComponent* PhysicsHandle = nullptr;
+
+	UPROPERTY()
+		UInputComponent* PawnInput = nullptr;
+
 	FVector LineTraceEnd;
 	FVector PlayerViewPointLocation;
 	FRotator PlayerViewPointRotation;
