@@ -31,8 +31,6 @@ void UOpenDoor::BeginPlay()
 	{
 		UE_LOG(LogTemp, Error, TEXT("%s has no pressure plate setup"), *GetOwner()->GetName());
 	}
-
-	ActorThatOpens = GetWorld()->GetFirstPlayerController()->GetPawn();
 }
 
 // Called every frame
@@ -58,9 +56,6 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 
 void UOpenDoor::OpenDoor(float DeltaTime)
 {
-	/*UE_LOG(LogTemp, Warning, TEXT("The object rotation is: %s"), *GetOwner()->GetActorRotation().ToString());
-	UE_LOG(LogTemp, Warning, TEXT("The object yaw is: %f"), GetOwner()->GetActorRotation().Yaw);*/
-
 	CurrentYaw = FMath::FInterpTo(CurrentYaw, OpenAngle, DeltaTime, DoorSpeedOpen);
 	FRotator DoorRotation = GetOwner()->GetActorRotation();
 	DoorRotation.Yaw = CurrentYaw;
@@ -79,6 +74,8 @@ float UOpenDoor::TotalMassOfActors() const
 {
 	float TotalMass = 0.f;
 	TArray<AActor*> OverlappingActors;
+
+	if (!PressurePlate) { return TotalMass; }
 	PressurePlate->GetOverlappingActors(OUT OverlappingActors);
 
 	for (AActor* Actor : OverlappingActors)
