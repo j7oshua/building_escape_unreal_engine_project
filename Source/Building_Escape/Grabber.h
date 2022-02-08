@@ -30,13 +30,18 @@ private:
 
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
 	UInputComponent* PawnInput = nullptr;
+	FVector LineTraceEnd;
+	FVector PlayerViewPointLocation;
+	FRotator PlayerViewPointRotation;
 
 	void Grab();
 	void Released();
 	void FindPhysicsHandle();
 	void SetupInputComponent();
+	void SetLineTraceEnd();
 
 	//Return the first actor within reach with a physics body
 	FHitResult GetFirstPhysicsBodyInReach() const;
-		
+
+
 };
