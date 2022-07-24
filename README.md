@@ -1,8 +1,7 @@
-*****Simple Building Escape Game******
-Reference: https://www.udemy.com/course/unrealcourse/
+Building Escape Game
 
 Using the basics of Unreal Engine C++ coding.
-Some of the concepts learned:
+Some of the concepts integrated into this simple single player game:
 - Using Pointers in Unreal Engine.
 - How to debug and log out to the output log.
 - How to use UPROPERTY.
